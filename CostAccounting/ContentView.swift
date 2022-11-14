@@ -16,7 +16,7 @@ struct ContentView: View {
                 Text("Track, analyze and improve your spendings")
                     .font(.subheadline)
                 Spacer()
-                Text("v0.5.0")
+                Text("v0.0.1")
                     .font(.subheadline)
             }
         }
