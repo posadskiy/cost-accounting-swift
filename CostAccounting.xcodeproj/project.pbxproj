@@ -14,6 +14,7 @@
 		282FE5462922D09B003BAB01 /* CostAccountingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FE5452922D09B003BAB01 /* CostAccountingTests.swift */; };
 		282FE5502922D09B003BAB01 /* CostAccountingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FE54F2922D09B003BAB01 /* CostAccountingUITests.swift */; };
 		282FE5522922D09B003BAB01 /* CostAccountingUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FE5512922D09B003BAB01 /* CostAccountingUITestsLaunchTests.swift */; };
+		282FE55F2922E42F003BAB01 /* ApplicationImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282FE55E2922E42F003BAB01 /* ApplicationImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		282FE54B2922D09B003BAB01 /* CostAccountingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CostAccountingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		282FE54F2922D09B003BAB01 /* CostAccountingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostAccountingUITests.swift; sourceTree = "<group>"; };
 		282FE5512922D09B003BAB01 /* CostAccountingUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostAccountingUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		282FE55E2922E42F003BAB01 /* ApplicationImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				282FE5342922D099003BAB01 /* CostAccountingApp.swift */,
 				282FE5362922D099003BAB01 /* ContentView.swift */,
 				282FE5382922D09A003BAB01 /* Assets.xcassets */,
+				282FE55E2922E42F003BAB01 /* ApplicationImage.swift */,
 				282FE53A2922D09A003BAB01 /* Preview Content */,
 			);
 			path = CostAccounting;
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				282FE55F2922E42F003BAB01 /* ApplicationImage.swift in Sources */,
 				282FE5372922D099003BAB01 /* ContentView.swift in Sources */,
 				282FE5352922D099003BAB01 /* CostAccountingApp.swift in Sources */,
 			);
