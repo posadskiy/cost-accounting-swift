@@ -9,18 +9,37 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Cost Accounting")
-                .font(.title)
-            HStack {
-                Text("Track, analyze and improve your spendings")
-                    .font(.subheadline)
-                Spacer()
-                Text("v0.0.1")
+        VStack {
+            MapView()
+                .ignoresSafeArea(edges: .top)
+                .frame(height: 300)
+            
+            ApplicationImage()
+                .offset(y: -130)
+                .padding(.bottom, -130)
+
+            VStack(alignment: .leading) {
+                Text("Cost Accounting")
+                    .font(.title)
+                HStack {
+                    Text("Track, analyze and improve your spendings")
+                    Spacer()
+                    Text("v0.0.1")
+                }
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                
+                Divider()
+                
+                Text("Developed carefully Slovenia")
+                    .font(.title2)
+                Text("Perhaps, the most picturesque country in the world")
                     .font(.subheadline)
             }
+            .padding()
+            
+            Spacer()
         }
-        .padding()
     }
 }
 
