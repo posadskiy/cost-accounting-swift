@@ -1,50 +1,52 @@
 //
-//  ContentView.swift
+//  LandmarkDetail.swift
 //  CostAccounting
 //
-//  Created by Dmitrii on 14.11.2022.
+//  Created by Dmitrii on 15.11.2022.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct LandmarkDetail: View {
+    var landmark: Landmark
+    
     var body: some View {
-        VStack {
-            MapView()
+        ScrollView {
+            HeadingMapView(coordinate: landmark.locationCoordinate)
                 .ignoresSafeArea(edges: .top)
                 .frame(height: 300)
             
-            ApplicationImage()
+            CircleImage(image: landmark.image)
                 .offset(y: -130)
                 .padding(.bottom, -130)
 
             VStack(alignment: .leading) {
-                Text("Cost Accounting")
+                Text(landmark.name)
                     .font(.title)
                 HStack {
-                    Text("Track, analyze and improve your spendings")
+                    Text(landmark.park)
                     Spacer()
-                    Text("v0.0.1")
+                    Text(landmark.state)
                 }
                 .font(.subheadline)
                 .foregroundColor(.secondary)
                 
                 Divider()
                 
-                Text("Developed carefully Slovenia")
+                Text("About \(landmark.name)")
                     .font(.title2)
-                Text("Perhaps, the most picturesque country in the world")
+                Text(landmark.description)
                     .font(.subheadline)
             }
             .padding()
-            
-            Spacer()
         }
+        .navigationTitle(landmark.name)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct LandmarkDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        LandmarkDetail(landmark: landmarks[0])
     }
 }
