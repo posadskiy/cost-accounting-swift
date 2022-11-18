@@ -16,5 +16,6 @@ struct LandmarkPage: View {
 struct LandmarkPage_Previews: PreviewProvider {
     static var previews: some View {
         LandmarkPage()
+            .environmentObject(ModelData())
     }
 }
