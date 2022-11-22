@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct CostAccountingApp: App {
-    @StateObject private var modelData = ModelData()
+    //@StateObject private var modelData = ModelData()
     
     var body: some Scene {
         WindowGroup {
-            LandmarkPage()
-                .environmentObject(modelData)
+            AddPurchasePage()
+                //.environmentObject(modelData)
         }
     }
 }
