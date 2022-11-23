@@ -13,7 +13,8 @@ struct CostAccountingApp: App {
     
     var body: some Scene {
         WindowGroup {
-            AddPurchasePage()
+            LoginPage()
+            //AddPurchasePage()
                 //.environmentObject(modelData)
         }
     }
