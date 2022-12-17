@@ -24,9 +24,8 @@
 		284CD1B0292D3FD7009E4C7E /* PurchaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1AF292D3FD7009E4C7E /* PurchaseRequest.swift */; };
 		284CD1B2292D41EE009E4C7E /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1B1292D41EE009E4C7E /* Category.swift */; };
 		284CD1B6292D6CF5009E4C7E /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1B5292D6CF5009E4C7E /* LoginPage.swift */; };
-		284CD1B9292D6EDE009E4C7E /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1B8292D6EDE009E4C7E /* LoginService.swift */; };
 		284CD1BC292D6F3C009E4C7E /* LoginCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1BB292D6F3C009E4C7E /* LoginCredentials.swift */; };
-		284CD1BF292D7A97009E4C7E /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1BE292D7A97009E4C7E /* LoginController.swift */; };
+		284CD1C1292E8D0C009E4C7E /* Authenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 284CD1C0292E8D0C009E4C7E /* Authenticator.swift */; };
 		2877A0F1292AA5C8001413CC /* AddPurchasePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2877A0F0292AA5C8001413CC /* AddPurchasePage.swift */; };
 		2877A0F4292AA627001413CC /* Purchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2877A0F3292AA627001413CC /* Purchase.swift */; };
 		2877A0F6292AABDD001413CC /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2877A0F5292AABDD001413CC /* Currency.swift */; };
@@ -42,6 +41,10 @@
 		2888D0FB29242ADD00DC1FFE /* LandmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888D0FA29242ADD00DC1FFE /* LandmarkPage.swift */; };
 		2888D0FD29242CB100DC1FFE /* CirleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888D0FC29242CB100DC1FFE /* CirleImage.swift */; };
 		2888D0FF29242D2500DC1FFE /* HeadingMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2888D0FE29242D2500DC1FFE /* HeadingMapView.swift */; };
+		28B7943929465BA3004CCFBB /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7943829465BA3004CCFBB /* SplitView.swift */; };
+		28B7943B29466B13004CCFBB /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7943A29466B13004CCFBB /* Purchaser.swift */; };
+		28F2A5B42947A13300491E5C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A5B32947A13300491E5C /* UserService.swift */; };
+		28F2A5B72947A39400491E5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A5B62947A39400491E5C /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,9 +85,8 @@
 		284CD1AF292D3FD7009E4C7E /* PurchaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseRequest.swift; sourceTree = "<group>"; };
 		284CD1B1292D41EE009E4C7E /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		284CD1B5292D6CF5009E4C7E /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
-		284CD1B8292D6EDE009E4C7E /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		284CD1BB292D6F3C009E4C7E /* LoginCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCredentials.swift; sourceTree = "<group>"; };
-		284CD1BE292D7A97009E4C7E /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		284CD1C0292E8D0C009E4C7E /* Authenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authenticator.swift; sourceTree = "<group>"; };
 		2877A0F0292AA5C8001413CC /* AddPurchasePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPurchasePage.swift; sourceTree = "<group>"; };
 		2877A0F3292AA627001413CC /* Purchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchase.swift; sourceTree = "<group>"; };
 		2877A0F5292AABDD001413CC /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
@@ -100,6 +102,10 @@
 		2888D0FA29242ADD00DC1FFE /* LandmarkPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkPage.swift; sourceTree = "<group>"; };
 		2888D0FC29242CB100DC1FFE /* CirleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CirleImage.swift; sourceTree = "<group>"; };
 		2888D0FE29242D2500DC1FFE /* HeadingMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadingMapView.swift; sourceTree = "<group>"; };
+		28B7943829465BA3004CCFBB /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
+		28B7943A29466B13004CCFBB /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
+		28F2A5B32947A13300491E5C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		28F2A5B62947A39400491E5C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +189,7 @@
 		282FE5332922D099003BAB01 /* CostAccounting */ = {
 			isa = PBXGroup;
 			children = (
+				28F2A5B12947A11D00491E5C /* User */,
 				284CD1B3292D6CD8009E4C7E /* Auth */,
 				2877A0ED292AA58B001413CC /* Purchase */,
 				2888D0D329241A2900DC1FFE /* Landmarks */,
@@ -248,7 +255,6 @@
 		284CD1B7292D6ED1009E4C7E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				284CD1BE292D7A97009E4C7E /* LoginController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -264,7 +270,7 @@
 		284CD1BD292D7A86009E4C7E /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				284CD1B8292D6EDE009E4C7E /* LoginService.swift */,
+				284CD1C0292E8D0C009E4C7E /* Authenticator.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -291,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				2877A0F0292AA5C8001413CC /* AddPurchasePage.swift */,
+				28B7943829465BA3004CCFBB /* SplitView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -302,6 +309,7 @@
 				2877A0F3292AA627001413CC /* Purchase.swift */,
 				2877A0F5292AABDD001413CC /* Currency.swift */,
 				284CD1B1292D41EE009E4C7E /* Category.swift */,
+				28B7943A29466B13004CCFBB /* Purchaser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -361,6 +369,31 @@
 				281A7B2E2927AA4B0006F166 /* Helpers */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		28F2A5B12947A11D00491E5C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				28F2A5B52947A38800491E5C /* Model */,
+				28F2A5B22947A12500491E5C /* Service */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		28F2A5B22947A12500491E5C /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				28F2A5B32947A13300491E5C /* UserService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		28F2A5B52947A38800491E5C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				28F2A5B62947A39400491E5C /* User.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -496,9 +529,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				281A7B312927BAEF0006F166 /* HexagonParameters.swift in Sources */,
+				284CD1C1292E8D0C009E4C7E /* Authenticator.swift in Sources */,
 				282FE55F2922E42F003BAB01 /* ApplicationImage.swift in Sources */,
 				2888D0FF29242D2500DC1FFE /* HeadingMapView.swift in Sources */,
-				284CD1B9292D6EDE009E4C7E /* LoginService.swift in Sources */,
+				28F2A5B72947A39400491E5C /* User.swift in Sources */,
 				2888D0CF2923FD2200DC1FFE /* MapView.swift in Sources */,
 				282FE5372922D099003BAB01 /* AboutView.swift in Sources */,
 				281A7B392927BDC50006F166 /* RotatedBadgeSymbol.swift in Sources */,
@@ -508,7 +542,6 @@
 				2888D0F72924283400DC1FFE /* LandmarkList.swift in Sources */,
 				2888D0F929242A8800DC1FFE /* LandmarkDetail.swift in Sources */,
 				2877A0F1292AA5C8001413CC /* AddPurchasePage.swift in Sources */,
-				284CD1BF292D7A97009E4C7E /* LoginController.swift in Sources */,
 				282FE5352922D099003BAB01 /* CostAccountingApp.swift in Sources */,
 				2888D0FB29242ADD00DC1FFE /* LandmarkPage.swift in Sources */,
 				284CD1BC292D6F3C009E4C7E /* LoginCredentials.swift in Sources */,
@@ -518,9 +551,12 @@
 				2888D0D529241A7000DC1FFE /* Landmark.swift in Sources */,
 				2888D0F52924246600DC1FFE /* LandmarkRow.swift in Sources */,
 				2888D0EF29241BBB00DC1FFE /* ModelData.swift in Sources */,
+				28B7943929465BA3004CCFBB /* SplitView.swift in Sources */,
 				2877A0F4292AA627001413CC /* Purchase.swift in Sources */,
 				2888D0FD29242CB100DC1FFE /* CirleImage.swift in Sources */,
 				281A7B342927BBCD0006F166 /* BadgeBackground.swift in Sources */,
+				28F2A5B42947A13300491E5C /* UserService.swift in Sources */,
+				28B7943B29466B13004CCFBB /* Purchaser.swift in Sources */,
 				281A7B2D2927A9F00006F166 /* FavoriteButton.swift in Sources */,
 				284CD1B2292D41EE009E4C7E /* Category.swift in Sources */,
 			);

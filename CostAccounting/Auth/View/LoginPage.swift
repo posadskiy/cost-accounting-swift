@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LoginPage: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @EnvironmentObject var authenticator: Authenticator
+
+    @State private var email: String = "dmitry.posadsky@gmail.com"
+    @State private var password: String = "29708d798cac22170b0165b478495d7800b64c0df5ef24469c7efea4554d8112"
 
     var body: some View {
         ScrollView {
@@ -35,13 +37,14 @@ struct LoginPage: View {
             }
             HStack {
                 Button("Save") {
-                    LoginController().login(loginCredentials: prepareCredentials())
+                    login()
                 }
                 Button("Clear") {
                     clearPurchase()
                 }
             }
         }
+        .padding()
     }
     
     func clearPurchase() -> Void {
@@ -51,6 +54,10 @@ struct LoginPage: View {
     
     func prepareCredentials() -> LoginCredentials {
         return LoginCredentials(id: "", email: self.email, password: self.password)
+    }
+    
+    func login() -> Void {
+        authenticator.login(loginCredentials: prepareCredentials())
     }
 }
 

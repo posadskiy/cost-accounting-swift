@@ -14,11 +14,15 @@ struct AddPurchasePage: View {
     @State private var currency: Currency = .USD
     @State private var date: Date = Date()
     @State private var isSplit: Bool = false
+    
+    @EnvironmentObject var authenticator: Authenticator
+    @EnvironmentObject var userService: UserSerivce
+    
 
     var body: some View {
         ScrollView {
             VStack {
-                Text("Name")
+                Text("Name \(userService.currentUser.id)")
                 TextField(
                     "Purchase name",
                     text: $name
@@ -56,6 +60,11 @@ struct AddPurchasePage: View {
                 Toggle(isOn: $isSplit) {
                     Text("Split")
                 }
+                if (isSplit) {
+                    List {
+                        
+                    }
+                }
             }
             HStack {
                 Button("Save") {
@@ -66,6 +75,7 @@ struct AddPurchasePage: View {
                 }
             }
         }
+        .padding()
     }
     
     func preparePurchase() -> Purchase {
@@ -82,7 +92,9 @@ struct AddPurchasePage: View {
 }
 
 struct AddPurchasePage_Previews: PreviewProvider {
+    
     static var previews: some View {
         AddPurchasePage()
+            .environmentObject(Authenticator())
     }
 }

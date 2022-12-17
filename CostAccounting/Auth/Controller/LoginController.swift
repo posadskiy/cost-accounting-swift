@@ -9,8 +9,8 @@ import Foundation
 
 class LoginController {
     func login(loginCredentials: LoginCredentials) -> Void {
-        var isUserLogged = LoginService.login(loginCredentials: loginCredentials)
+        var isUserLogged = Authenticator.login(loginCredentials: loginCredentials)
         print(isUserLogged)
-        print(LoginService.user)
+        print(Authenticator.user)
     }
 }

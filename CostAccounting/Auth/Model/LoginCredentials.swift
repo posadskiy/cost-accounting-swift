@@ -9,6 +9,7 @@ import Foundation
 
 struct LoginCredentials: Identifiable, Codable {
     var id: String = ""
-    var email: String = ""
+    var email: String? = ""
     var password: String? = ""
+    var defaultCurrency: Currency? = .USD
 }

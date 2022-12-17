@@ -18,7 +18,7 @@ class PurchaseController {
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         do {
-            var encoder = JSONEncoder()
+            let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
             let jsonData = try encoder.encode(requestData)
             let jsonString = String(data: jsonData, encoding: .utf8)!
