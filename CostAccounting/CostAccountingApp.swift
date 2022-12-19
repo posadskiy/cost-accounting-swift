@@ -9,20 +9,18 @@ import SwiftUI
 
 @main
 struct CostAccountingApp: App {
-    //@StateObject private var modelData = ModelData()
-    @StateObject private var authenticator = Authenticator()
-    @StateObject private var userService = UserSerivce()
+    @StateObject private var userController = UserController()
+    @StateObject private var projectController = ProjectController()
     
     var body: some Scene {
         WindowGroup {
             AddPurchasePage()
-                .fullScreenCover(isPresented: $authenticator.needsAuthentication) {
+                .fullScreenCover(isPresented: $userController.currentUserNotLoaded) {
                     LoginPage()
-                        .environmentObject(authenticator)
-                        .environmentObject(userService)
+                        .environmentObject(userController)
                 }
-                .environmentObject(authenticator)
-                .environmentObject(userService)
+                .environmentObject(userController)
+                .environmentObject(projectController)
         }
     }
 }

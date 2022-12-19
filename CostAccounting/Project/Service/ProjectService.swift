@@ -1,17 +1,16 @@
 //
-//  UserService.swift
+//  ProjectService.swift
 //  CostAccounting
 //
-//  Created by Dmitrii on 12.12.2022.
+//  Created by Dmitrii on 19.12.2022.
 //
 
 import Foundation
-import SwiftUI
 
-class UserSerivce {
-    
-    func getUser(userId: String, onSuccess: @escaping (_: User) -> Void) -> Void {
-        let url = URL(string: "http://localhost:8085/users/user/v1/\(userId)")
+class ProjectService {
+
+    func getAllUsersByProject(projectId: String, currentUserId: String, onSuccess: @escaping (_: [String], _: String) -> Void) {
+        let url = URL(string: "http://localhost:8084/projects/project/all-users-in-project/\(projectId)")
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
@@ -26,10 +25,10 @@ class UserSerivce {
             if let data = data {
                 let jsonDecoder = JSONDecoder()
                 do {
-                    let user = try jsonDecoder.decode(User.self, from: data)
+                    let users = try jsonDecoder.decode([String].self, from: data)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        onSuccess(user)
+                        onSuccess(users, currentUserId)
                     }
                 }
                 catch {

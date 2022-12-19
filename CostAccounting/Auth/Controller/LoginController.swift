@@ -2,15 +2,24 @@
 //  LoginController.swift
 //  CostAccounting
 //
-//  Created by Dmitrii on 22.11.2022.
+//  Created by Dmitrii on 19.12.2022.
 //
 
 import Foundation
 
 class LoginController {
-    func login(loginCredentials: LoginCredentials) -> Void {
-        var isUserLogged = Authenticator.login(loginCredentials: loginCredentials)
-        print(isUserLogged)
-        print(Authenticator.user)
+    
+    var userController: UserController
+    
+    init(userController: UserController) {
+        self.userController = userController
+    }
+
+    func successLogin(id: String) {
+        userController.getCurrentUser(userId: id)
+    }
+    
+    func login(credentials: LoginCredentials) {
+        LoginService().login(loginCredentials: credentials, onSuccess: self.successLogin)
     }
 }

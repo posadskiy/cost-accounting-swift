@@ -9,20 +9,25 @@ import SwiftUI
 
 struct AddPurchasePage: View {
     @State private var name: String = ""
-    @State private var amount: String = ""
+    @State private var amount: String = "0"
     @State private var category: String = ""
     @State private var currency: Currency = .USD
     @State private var date: Date = Date()
     @State private var isSplit: Bool = false
     
-    @EnvironmentObject var authenticator: Authenticator
-    @EnvironmentObject var userService: UserSerivce
+    @EnvironmentObject var userController: UserController
+    @EnvironmentObject var projectController: ProjectController
     
 
     var body: some View {
         ScrollView {
+            Text("Welcome, \(userController.currentUser.name)")
+                .padding(.bottom)
+            
+            Text("New purchase")
+                .bold()
             VStack {
-                Text("Name \(userService.currentUser.id)")
+                Text("Name")
                 TextField(
                     "Purchase name",
                     text: $name
@@ -61,9 +66,10 @@ struct AddPurchasePage: View {
                     Text("Split")
                 }
                 if (isSplit) {
-                    List {
-                        
-                    }
+                    SplitUserView(name: userController.currentUser.name, amount: amount, isChecked: true)
+                        ForEach(projectController.projectUsers) { user in
+                            SplitUserView(name: user.name, amount: "0", isChecked: false)
+                        }
                 }
             }
             HStack {
@@ -95,6 +101,7 @@ struct AddPurchasePage_Previews: PreviewProvider {
     
     static var previews: some View {
         AddPurchasePage()
-            .environmentObject(Authenticator())
+            .environmentObject(ProjectController())
+            .environmentObject(UserController())
     }
 }

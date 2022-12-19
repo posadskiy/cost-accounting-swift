@@ -1,16 +1,14 @@
 //
-//  LoginController.swift
+//  LoginService.swift
 //  CostAccounting
 //
-//  Created by Dmitrii on 22.11.2022.
+//  Created by Dmitrii on 17.12.2022.
 //
 
 import Foundation
 
 class LoginService {
-    private(set) static var user: LoginCredentials? = nil
-
-    static func login(loginCredentials: LoginCredentials) -> Bool {
+    func login(loginCredentials: LoginCredentials, onSuccess: @escaping (_: String) -> Void) -> Void {
         let url = URL(string: "http://localhost:8080/auth/login/v1/auth/")
         guard let requestUrl = url else { fatalError() }
         
@@ -22,34 +20,34 @@ class LoginService {
             encoder.dateEncodingStrategy = .iso8601
             let jsonData = try encoder.encode(loginCredentials)
             let jsonString = String(data: jsonData, encoding: .utf8)!
-            //request.httpBody = try? JSONSerialization.data(withJSONObject: purchase)
             request.httpBody = jsonString.data(using: .utf8)
-            let semaphore: DispatchSemaphore = DispatchSemaphore(value: 0)
+            
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
                 if let error = error {
                     print("error \(error)")
                     return
                 }
-
+                
                 // Parse JSON data
                 if let data = data {
+                    let jsonDecoder = JSONDecoder()
                     do {
-                        let jsonDecoder = JSONDecoder()
                         let user = try jsonDecoder.decode(LoginCredentials.self, from: data)
-                        self.user = user
-                    } catch {
-                        print(error)
+                        print(user)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            onSuccess(user.id)
+                        }
                     }
+                    catch {
+                        print("Couldn't login: \(error)")
+                    }
+                    
                 }
-                semaphore.signal()
             })
             
             task.resume()
-            semaphore.wait()
         } catch {
             print(error)
         }
-
-        return self.user != nil
     }
 }
