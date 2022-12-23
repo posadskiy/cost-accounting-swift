@@ -8,14 +8,16 @@
 import Foundation
 
 class UserController: ObservableObject {
-    @Published var currentUser: User = StorageUtils.load("user.json")
-    @Published var currentUserNotLoaded: Bool = false
+    static let instance = UserController()
+
+    @Published var currentUser: User = User()//StorageUtils.load("user.json")
+    @Published var currentUserNotLoaded: Bool = true
     
     func getCurrentUser(userId: String) {
         UserSerivce().getUser(userId: userId) { user in
             self.currentUser = user
             
-            ProjectController().getAllUsersByProject(projectId: user.projectId, currentUserId: user.id)
+            ProjectController.instance.getAllUsersByProject(projectId: user.projectId, currentUserId: user.id)
             
             self.currentUserNotLoaded = false
         }

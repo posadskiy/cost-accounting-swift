@@ -8,15 +8,10 @@
 import Foundation
 
 class LoginController {
-    
-    var userController: UserController
-    
-    init(userController: UserController) {
-        self.userController = userController
-    }
+    static let instance = LoginController()
 
     func successLogin(id: String) {
-        userController.getCurrentUser(userId: id)
+        UserController.instance.getCurrentUser(userId: id)
     }
     
     func login(credentials: LoginCredentials) {

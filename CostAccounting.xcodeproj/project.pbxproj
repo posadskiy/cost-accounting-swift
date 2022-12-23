@@ -52,6 +52,7 @@
 		289DD04C2950F9B0007D0D82 /* project.json in Resources */ = {isa = PBXBuildFile; fileRef = 289DD0392950E8D2007D0D82 /* project.json */; };
 		28B7943929465BA3004CCFBB /* SplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7943829465BA3004CCFBB /* SplitView.swift */; };
 		28B7943B29466B13004CCFBB /* Purchaser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B7943A29466B13004CCFBB /* Purchaser.swift */; };
+		28ECFC7B2955C2B8007B65C6 /* StatePurchase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28ECFC7A2955C2B8007B65C6 /* StatePurchase.swift */; };
 		28F2A5B42947A13300491E5C /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A5B32947A13300491E5C /* UserService.swift */; };
 		28F2A5B72947A39400491E5C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2A5B62947A39400491E5C /* User.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		289DD04A2950F770007D0D82 /* ProjectService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectService.swift; sourceTree = "<group>"; };
 		28B7943829465BA3004CCFBB /* SplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitView.swift; sourceTree = "<group>"; };
 		28B7943A29466B13004CCFBB /* Purchaser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Purchaser.swift; sourceTree = "<group>"; };
+		28ECFC7A2955C2B8007B65C6 /* StatePurchase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatePurchase.swift; sourceTree = "<group>"; };
 		28F2A5B32947A13300491E5C /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		28F2A5B62947A39400491E5C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -335,6 +337,7 @@
 				2877A0F5292AABDD001413CC /* Currency.swift */,
 				284CD1B1292D41EE009E4C7E /* Category.swift */,
 				28B7943A29466B13004CCFBB /* Purchaser.swift */,
+				28ECFC7A2955C2B8007B65C6 /* StatePurchase.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -651,6 +654,7 @@
 				28B7943929465BA3004CCFBB /* SplitView.swift in Sources */,
 				2877A0F4292AA627001413CC /* Purchase.swift in Sources */,
 				2888D0FD29242CB100DC1FFE /* CirleImage.swift in Sources */,
+				28ECFC7B2955C2B8007B65C6 /* StatePurchase.swift in Sources */,
 				289DD0372950E840007D0D82 /* StorageUtils.swift in Sources */,
 				281A7B342927BBCD0006F166 /* BadgeBackground.swift in Sources */,
 				28F2A5B42947A13300491E5C /* UserService.swift in Sources */,

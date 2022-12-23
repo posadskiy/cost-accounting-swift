@@ -8,16 +8,10 @@
 import SwiftUI
 
 struct AddPurchasePage: View {
-    @State private var name: String = ""
-    @State private var amount: String = "0"
-    @State private var category: String = ""
-    @State private var currency: Currency = .USD
-    @State private var date: Date = Date()
-    @State private var isSplit: Bool = false
+    @State private var purchase: StatePurchase = StatePurchase(userCount: 0)
     
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var projectController: ProjectController
-    
 
     var body: some View {
         ScrollView {
@@ -30,7 +24,7 @@ struct AddPurchasePage: View {
                 Text("Name")
                 TextField(
                     "Purchase name",
-                    text: $name
+                    text: $purchase.name
                 )
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
@@ -40,15 +34,16 @@ struct AddPurchasePage: View {
                 Text("Amount")
                 TextField(
                     "How much it was?",
-                    text: $amount
+                    text: $purchase.amount
                 )
+                .keyboardType(.numberPad)
                 .textInputAutocapitalization(.never)
                 .disableAutocorrection(true)
                 .border(.secondary)
             }
             VStack {
                 Text("Currency")
-                Picker(selection: $currency, label: Text("Picker")) {
+                Picker(selection: $purchase.currency, label: Text("Picker")) {
                     Text("USD").tag(Currency.USD)
                     Text("EUR").tag(Currency.EUR)
                 }
@@ -57,16 +52,16 @@ struct AddPurchasePage: View {
                 Text("Date")
                 DatePicker(
                     "Start Date",
-                    selection: $date,
+                    selection: $purchase.date,
                     displayedComponents: [.date]
                 )
             }
             VStack {
-                Toggle(isOn: $isSplit) {
+                Toggle(isOn: $purchase.isSplit) {
                     Text("Split")
                 }
-                if (isSplit) {
-                    SplitUserView(name: userController.currentUser.name, amount: amount, isChecked: true)
+                if (purchase.isSplit) {
+                    SplitUserView(name: userController.currentUser.name, amount: purchase.amount, isChecked: true)
                         ForEach(projectController.projectUsers) { user in
                             SplitUserView(name: user.name, amount: "0", isChecked: false)
                         }
@@ -85,15 +80,11 @@ struct AddPurchasePage: View {
     }
     
     func preparePurchase() -> Purchase {
-        return Purchase(id: 0, category: Category(), name: name, amount: Double(amount)!, date: date, currency: currency, isPrivate: false)
+        return Purchase(id: 0, category: Category(), name: purchase.name, amount: Double(purchase.amount)!, date: purchase.date, currency: purchase.currency, isPrivate: false)
     }
     
     func clearPurchase() -> Void {
-        self.name = ""
-        self.amount = ""
-        self.currency = .USD
-        self.date = Date()
-        self.isSplit = false
+        self.purchase = StatePurchase(userCount: 0)
     }
 }
 

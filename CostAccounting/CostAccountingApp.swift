@@ -9,8 +9,8 @@ import SwiftUI
 
 @main
 struct CostAccountingApp: App {
-    @StateObject private var userController = UserController()
-    @StateObject private var projectController = ProjectController()
+    @StateObject private var userController = UserController.instance
+    @StateObject private var projectController = ProjectController.instance
     
     var body: some Scene {
         WindowGroup {

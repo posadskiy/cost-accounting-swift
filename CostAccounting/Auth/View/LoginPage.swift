@@ -10,8 +10,6 @@ import SwiftUI
 struct LoginPage: View {
     @State private var email: String = "dmitry.posadsky@gmail.com"
     @State private var password: String = "29708d798cac22170b0165b478495d7800b64c0df5ef24469c7efea4554d8112"
-    
-    @EnvironmentObject var userController: UserController
 
     var body: some View {
         ScrollView {
@@ -57,7 +55,7 @@ struct LoginPage: View {
     }
     
     func login() -> Void {
-        LoginController(userController: userController).login(credentials: prepareCredentials())
+        LoginController.instance.login(credentials: prepareCredentials())
     }
 }
 

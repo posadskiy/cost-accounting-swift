@@ -8,7 +8,9 @@
 import Foundation
 
 class ProjectController: ObservableObject {
-    @Published var projectUsers: [User] = StorageUtils.load("project.json")
+    static let instance = ProjectController()
+
+    @Published var projectUsers: [User] = []//StorageUtils.load("project.json")
     
     func onSuccessGetProjectUser(user: User) {
         self.projectUsers.append(user)
