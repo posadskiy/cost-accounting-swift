@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AddPurchasePage: View {
-    @State private var purchase: StatePurchase = StatePurchase(userCount: 0)
-    
     @EnvironmentObject var userController: UserController
     @EnvironmentObject var projectController: ProjectController
+    @EnvironmentObject var purchaseController: PurchaseController
+    @EnvironmentObject var currencyController: CurrencyController
+    @EnvironmentObject var categoryController: CategoryController
+
+    @StateObject var purchase: StatePurchase = StatePurchase()
 
     var body: some View {
         ScrollView {
@@ -20,6 +23,24 @@ struct AddPurchasePage: View {
             
             Text("New purchase")
                 .bold()
+            VStack {
+                Text("Category")
+                HStack {
+                    ForEach(categoryController.categories) { category in
+                        if let appleIcon = category.appleIcon {
+                            let isSelected = purchase.category == category.id
+                            
+                            Button() {
+                                purchase.category = category.id
+                            } label: {
+                                Image(systemName: appleIcon)
+                                    .foregroundColor(isSelected ? .yellow : .blue)
+                                    .imageScale(.large)
+                            }
+                        }
+                    }
+                }
+            }
             VStack {
                 Text("Name")
                 TextField(
@@ -43,9 +64,10 @@ struct AddPurchasePage: View {
             }
             VStack {
                 Text("Currency")
-                Picker(selection: $purchase.currency, label: Text("Picker")) {
-                    Text("USD").tag(Currency.USD)
-                    Text("EUR").tag(Currency.EUR)
+                Picker("Currency", selection: $purchase.currency) {
+                    ForEach(currencyController.currencies, id: \.self) { currency in
+                        Text(currency).tag(currency)
+                    }
                 }
             }
             VStack {
@@ -60,16 +82,23 @@ struct AddPurchasePage: View {
                 Toggle(isOn: $purchase.isSplit) {
                     Text("Split")
                 }
+                .onChange(of: purchase.isSplit) { newValue in
+                    if (newValue) {
+                        purchaseController.addPurchase(userId: userController.currentUser.id, amount: purchase.amount)
+                    } else {
+                        purchaseController.clearPurchase()
+                    }
+                }
                 if (purchase.isSplit) {
-                    SplitUserView(name: userController.currentUser.name, amount: purchase.amount, isChecked: true)
+                    SplitUserView(userId: userController.currentUser.id, userName: userController.currentUser.name, amount: purchase.amount, isChecked: true)
                         ForEach(projectController.projectUsers) { user in
-                            SplitUserView(name: user.name, amount: "0", isChecked: false)
+                            SplitUserView(userId: user.id, userName: user.name, amount: "0", isChecked: false)
                         }
                 }
             }
             HStack {
                 Button("Save") {
-                    PurchaseController.save(purchase: preparePurchase())
+                    purchaseController.savePurchase(purchase: self.purchase.toPurchase())
                 }
                 Button("Clear") {
                     clearPurchase()
@@ -79,12 +108,8 @@ struct AddPurchasePage: View {
         .padding()
     }
     
-    func preparePurchase() -> Purchase {
-        return Purchase(id: 0, category: Category(), name: purchase.name, amount: Double(purchase.amount)!, date: purchase.date, currency: purchase.currency, isPrivate: false)
-    }
-    
     func clearPurchase() -> Void {
-        self.purchase = StatePurchase(userCount: 0)
+        self.purchase.clear()
     }
 }
 
@@ -94,5 +119,11 @@ struct AddPurchasePage_Previews: PreviewProvider {
         AddPurchasePage()
             .environmentObject(ProjectController())
             .environmentObject(UserController())
+            .environmentObject(PurchaseController())
+            .environmentObject(CurrencyController(currencies: ["USD", "EUR"]))
+            .environmentObject(CategoryController(categories: [
+                Category(id: "0", name: "Travel", emoji: "travel", appleIcon: "globe.americas", projectId: "0"),
+                Category(id: "1", name: "Phone", emoji: "phone", appleIcon: "phone", projectId: "0"),
+            ]))
     }
 }

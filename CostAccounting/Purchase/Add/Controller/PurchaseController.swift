@@ -7,41 +7,40 @@
 
 import Foundation
 
-class PurchaseController {
-    static func save(purchase: Purchase) -> Void {
-        var requestData = PurchaseRequest()
-        requestData.purchase = purchase
-        let url = URL(string: "http://localhost:8082/money-actions/purchase/add")
-        guard let requestUrl = url else { fatalError() }
-        
-        var request = URLRequest(url: requestUrl)
-        request.httpMethod = "POST"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        do {
-            let encoder = JSONEncoder()
-            encoder.dateEncodingStrategy = .iso8601
-            let jsonData = try encoder.encode(requestData)
-            let jsonString = String(data: jsonData, encoding: .utf8)!
-            print(jsonString)
-            //request.httpBody = try? JSONSerialization.data(withJSONObject: purchase)
-            request.httpBody = jsonString.data(using: .utf8)
-            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) -> Void in
-                if let error = error {
-                    print("error \(error)")
+class PurchaseController: ObservableObject {
+    static let instance = PurchaseController()
+
+    var splittedPurchases = Dictionary<String, InputPurchase>()
+    
+    func addPurchase(userId: String, amount: String) -> Void {
+        let purchase = InputPurchase(userId: userId, amount: amount)
+        self.splittedPurchases[userId] = purchase
+        print("add purchase, count: \(splittedPurchases.count)")
+    }
+    
+    func removePurchase(userId: String) {
+        self.splittedPurchases.removeValue(forKey: userId)
+        print("remove purchase, count: \(splittedPurchases.count)")
+    }
+    
+    func clearPurchase() {
+        splittedPurchases.removeAll()
+    }
+    
+    func savePurchase(purchase: Purchase) {
+        if (splittedPurchases.isEmpty) {
+            PurchaseService.save(purchase: purchase, userId: UserController.instance.currentUser.id)
+        } else {
+            splittedPurchases.forEach { (key: String, value: InputPurchase) in
+                if (!value.isSelected) {
                     return
                 }
-                
-                // Parse JSON data
-                if let data = data {
-                    print("data \(data)")
-                    print("response \(response!)")
-                    
-                }
-            })
-            
-            task.resume()
-        } catch {
-            print(error)
+
+                var purchase = Purchase(from: purchase)
+                print(value.amount)
+                purchase.amount = Double(value.amount)!
+                PurchaseService.save(purchase: purchase, userId: value.userId)
+            }
         }
     }
 }

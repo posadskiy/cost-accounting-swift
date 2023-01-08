@@ -34,7 +34,7 @@ class LoginService {
                     do {
                         let user = try jsonDecoder.decode(LoginCredentials.self, from: data)
                         print(user)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        DispatchQueue.main.asyncAfter(deadline: .now()) {
                             onSuccess(user.id)
                         }
                     }

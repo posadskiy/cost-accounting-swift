@@ -18,6 +18,8 @@ class UserController: ObservableObject {
             self.currentUser = user
             
             ProjectController.instance.getAllUsersByProject(projectId: user.projectId, currentUserId: user.id)
+            CurrencyController.instance.loadCurrencies()
+            CategoryController.instance.loadCategories()
             
             self.currentUserNotLoaded = false
         }

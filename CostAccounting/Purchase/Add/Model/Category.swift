@@ -9,4 +9,5 @@ import Foundation
 
 struct Category: Identifiable, Codable {
     var id: Int = 0
+    var name: String = ""
 }

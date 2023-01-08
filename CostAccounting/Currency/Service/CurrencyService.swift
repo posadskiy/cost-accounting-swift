@@ -1,16 +1,16 @@
 //
-//  ProjectService.swift
+//  CurrencyService.swift
 //  CostAccounting
 //
-//  Created by Dmitrii on 19.12.2022.
+//  Created by Dmitrii on 25.12.2022.
 //
 
 import Foundation
 
-class ProjectService {
-
-    func getAllUsersByProject(projectId: String, currentUserId: String, onSuccess: @escaping (_: [String], _: String) -> Void) {
-        let url = URL(string: "http://localhost:8084/projects/project/all-users-in-project/\(projectId)")
+class CurrencyService {
+    
+    static func getCurrencies(onSuccess: @escaping (_: [String]) -> Void) {
+        let url = URL(string: "http://localhost:8082/money-actions/currency/all")
         guard let requestUrl = url else { fatalError() }
         
         var request = URLRequest(url: requestUrl)
@@ -25,10 +25,10 @@ class ProjectService {
             if let data = data {
                 let jsonDecoder = JSONDecoder()
                 do {
-                    let users = try jsonDecoder.decode([String].self, from: data)
+                    let currencies = try jsonDecoder.decode([String].self, from: data)
                     
                     DispatchQueue.main.asyncAfter(deadline: .now()) {
-                        onSuccess(users, currentUserId)
+                        onSuccess(currencies)
                     }
                 }
                 catch {

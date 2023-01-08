@@ -12,5 +12,5 @@ struct User: Hashable, Identifiable, Codable {
     var email: String = ""
     var name: String = ""
     var projectId: String = ""
-    var defaultCurrency: Currency? = .USD
+    var defaultCurrency: String? = "USD"
 }

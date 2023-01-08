@@ -28,7 +28,7 @@ class UserSerivce {
                 do {
                     let user = try jsonDecoder.decode(User.self, from: data)
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
                         onSuccess(user)
                     }
                 }

@@ -11,6 +11,9 @@ import SwiftUI
 struct CostAccountingApp: App {
     @StateObject private var userController = UserController.instance
     @StateObject private var projectController = ProjectController.instance
+    @StateObject private var purchaseController = PurchaseController.instance
+    @StateObject private var currencyController = CurrencyController.instance
+    @StateObject private var categoryContrller = CategoryController.instance
     
     var body: some Scene {
         WindowGroup {
@@ -21,6 +24,9 @@ struct CostAccountingApp: App {
                 }
                 .environmentObject(userController)
                 .environmentObject(projectController)
+                .environmentObject(purchaseController)
+                .environmentObject(currencyController)
+                .environmentObject(categoryContrller)
         }
     }
 }

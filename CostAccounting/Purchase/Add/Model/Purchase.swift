@@ -13,6 +13,18 @@ struct Purchase: Codable, Identifiable {
     var name: String = ""
     var amount: Double = 0
     var date: Date = Date()
-    var currency: Currency = .USD
+    var currency: String = "EUR"
     var isPrivate: Bool = false
+    
+    init() {}
+    
+    init(from: Purchase) {
+        self.id = from.id
+        self.category = from.category
+        self.name = from.name
+        self.amount = from.amount
+        self.date = from.date
+        self.currency = from.currency
+        self.isPrivate = from.isPrivate
+    }
 }
